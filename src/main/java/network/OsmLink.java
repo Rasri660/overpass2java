@@ -1,6 +1,7 @@
 package network;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
@@ -123,4 +124,34 @@ public class OsmLink implements NetworkElement
 		return this.nodes;
 	}
 
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("OSM Link\n");
+		
+		builder.append("Nodes:\n{");
+		for(int i = 0; i < this.nodes.length ; i++)
+		{
+			builder.append(String.format("\n%s",this.nodes[i].toString()));
+		}
+		builder.append("\n}\n");
+		
+		if(this.attributes == null)
+		{
+			builder.append("No attributes.");
+		}
+		else
+		{
+			builder.append("Attributes:");
+			
+			for(Entry<String, String> entry : this.attributes.entrySet())
+			{
+				builder.append(String.format("\n %s: %s", 
+							   entry.getKey(),
+							   entry.getValue()));
+			}
+		}	
+		
+		return builder.toString();
+	}
 }

@@ -1,5 +1,7 @@
 package network;
 
+import java.math.BigInteger;
+
 import com.vividsolutions.jts.geom.Geometry;
 
 /**
@@ -16,7 +18,7 @@ public interface NetworkElement
 	 * 
 	 * @return id of the element.
 	 */
-	public Integer getId();
+	public BigInteger getId();
 	
 	/**
 	 * This method gets the geometry of the network element.

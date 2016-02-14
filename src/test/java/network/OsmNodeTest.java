@@ -2,6 +2,7 @@ package network;
 
 import static org.junit.Assert.*;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -20,7 +21,7 @@ public class OsmNodeTest
 	private OsmNode node;
 	
 	// Variables for the node.
-	private final int id = 1;
+	private final BigInteger id = new BigInteger("1");
 	private final double lon = 14.775023;
 	private final double lat = 58.295001;
 	private final String key = "highway";
@@ -87,7 +88,7 @@ public class OsmNodeTest
 		// Asserting id.
 		assertEquals("Testing getId() ",
 					  this.id, 
-					  this.node.getId().intValue());
+					  this.node.getId());
 	}
 
 	/**

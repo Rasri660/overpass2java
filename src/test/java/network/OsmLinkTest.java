@@ -2,6 +2,7 @@ package network;
 
 import static org.junit.Assert.*;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -20,13 +21,14 @@ public class OsmLinkTest
 	private OsmLink link;
 	
 	// Variables for the link.
-	private final int linkId = 1;
+	private final BigInteger linkId =  new BigInteger("1");
 	private final String key = "highway";
 	private final String value = "motorway";
 	
 	// Variables for the nodes.
 	private OsmNode[] nodes;
-	private final int[] nodeIds = {1,2};
+	private final BigInteger[] nodeIds = {new BigInteger("1"),
+										  new BigInteger("1")};
 	private final double[] nodeLats = {58.546269, 58.544477};
 	private final double[] nodeLons = {15.042370, 15.044800};
 
@@ -114,7 +116,7 @@ public class OsmLinkTest
 		// Asserting id.
 		assertEquals("Testing getId() ",
 					  this.linkId, 
-					  this.link.getId().intValue());
+					  this.link.getId());
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package network;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -15,7 +16,7 @@ import com.vividsolutions.jts.geom.GeometryFactory;
  */
 public class OsmLink implements NetworkElement 
 {
-	private Integer id;
+	private BigInteger id;
 	private HashMap<String,String> attributes;
 	private OsmNode[] nodes;
 
@@ -26,7 +27,7 @@ public class OsmLink implements NetworkElement
 	 * @param nodes			- Array with the nodes that build up the OSM link.
 	 * @param attributes	- HashMap with all the OSM tags of the link.
 	 */
-	public OsmLink(Integer id, OsmNode[] nodes, HashMap<String, String> attributes)
+	public OsmLink(BigInteger id, OsmNode[] nodes, HashMap<String, String> attributes)
 	{
 		// Checking for valid id.
 		if (id == null)
@@ -67,7 +68,7 @@ public class OsmLink implements NetworkElement
 	 * 
 	 * @return The OSM link id.
 	 */
-	public Integer getId() 
+	public BigInteger getId() 
 	{
 		
 		return this.id;
@@ -128,7 +129,7 @@ public class OsmLink implements NetworkElement
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("OSM Link\n");
-		
+		builder.append(String.format("Link id: %s\n", this.id.toString()));
 		builder.append("Nodes:\n{");
 		for(int i = 0; i < this.nodes.length ; i++)
 		{

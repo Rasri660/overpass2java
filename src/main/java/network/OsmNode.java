@@ -1,5 +1,6 @@
 package network;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -16,7 +17,7 @@ import com.vividsolutions.jts.geom.Point;
  */
 public class OsmNode implements NetworkElement 
 {
-	private final Integer id;
+	private final BigInteger  id;
 	private final HashMap<String,String> attributes;
 	private final Point coordinate;
 
@@ -28,7 +29,7 @@ public class OsmNode implements NetworkElement
 	 * @param lat			- Latitude of the node.
 	 * @param attributes	- HashMap with all the OSM tags of the node.
 	 */
-	public OsmNode(Integer id, Double lon, Double lat, HashMap<String, String> attributes)
+	public OsmNode(BigInteger id, Double lon, Double lat, HashMap<String, String> attributes)
 	{
 		// Checking for valid id.
 		if (id == null)
@@ -62,7 +63,7 @@ public class OsmNode implements NetworkElement
 	 * 
 	 * @return The OSM node id.
 	 */
-	public Integer getId() 
+	public BigInteger getId() 
 	{
 		
 		return this.id;
@@ -84,7 +85,7 @@ public class OsmNode implements NetworkElement
 	 * This method gets an attribute of the OSM node.
 	 * The method returns null if the attribute do not exist.
 	 * @param key - The attribute key.
-	 * @return The attribute value
+	 * @return The attribute value.
 	 */
 	public String getAttributes(String key) 
 	{
@@ -100,11 +101,21 @@ public class OsmNode implements NetworkElement
 		}
 	}
 	
+	/**
+	 * This method sets the attribute of the OSM node.
+	 * @param key 	- The attribute key.
+	 * @param value	- The attribute value.
+	 */
+	public void setAttributes(String key, String value)
+	{
+		this.attributes.put(key, value);
+	}
+	
 	public String toString()
 	{
 		StringBuilder builder = new StringBuilder();
 		builder.append("OSM Node\n");
-		builder.append(String.format("Node id: %01d\n", this.id.intValue()));
+		builder.append(String.format("Node id: %s\n", this.id.toString()));
 		builder.append(String.format("Longitude: %.6f\nLatitude: %.6f\n",
 									  this.coordinate.getCoordinate().x,
 									  this.coordinate.getCoordinate().y));

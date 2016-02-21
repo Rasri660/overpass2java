@@ -2,6 +2,7 @@ package network;
 
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import com.vividsolutions.jts.geom.Coordinate;
@@ -98,6 +99,26 @@ public class OsmNode implements NetworkElement
 		else
 		{
 			return this.attributes.get(key);
+		}
+	}
+	
+	/**
+	 * This method gets a keyset with all attribute keys of the OSM Node.
+	 * The method returns null if the attribute keyset does not exist.
+	 * @param key - The attribute key.
+	 * @return The key set
+	 */
+	public Set<String> getAttributeKeys()
+	{
+		// Returns null if the attribute object is null.
+		if(this.attributes == null)
+		{
+			return null;
+		}
+		// Returns the value from the attribute.
+		else
+		{
+			return this.attributes.keySet();
 		}
 	}
 	
